@@ -16,6 +16,11 @@ other heavily:
 
 - `docs/00..11` — the numbered study, meant to be read in order. Each chapter ends with a
   `> Continue to [next]` link and links *down* to the templates/examples it describes.
+- `docs/12..13` — reference appendices derived from the study: `12-glossary.md` (the 20 most-frequent
+  entities, defined and cross-linked) and `13-property-graph-21.md` (those 20 plus `Task`, re-expressed
+  as a Neo4j-style property graph with node properties, relationships, Cypher, and a Mermaid diagram).
+  Both are grounded strictly in the study text; if you change a definition in `12`, keep `13`'s nodes
+  and edges in sync.
 - `templates/` — copy-ready artifact templates (spec, design, tasks, constitution, ADR, DoR/DoD,
   glossary, traceability, vision/PRD). Each template's README row links *up* to the doc chapter
   that explains it.

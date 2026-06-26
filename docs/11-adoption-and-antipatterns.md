@@ -129,3 +129,6 @@ then standing law, then tooling.**
 This concludes the study chapters. See [`templates/`](../templates/) for copy-ready artifacts and
 [`examples/`](../examples/) for a fully worked feature. Return to the [README](../README.md) for
 the table of contents.
+
+> Reference appendices: [`12 — Glossary`](12-glossary.md) defines the method's core vocabulary, and
+> [`13 — Property Graph`](13-property-graph-21.md) re-expresses it as a graph model.

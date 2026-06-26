@@ -76,6 +76,8 @@ Read the `docs/` in order for the full study, or jump to the section you need.
 | 09 | [Quality & Traceability](docs/09-quality-and-traceability.md) | Linking need → requirement → spec → test. |
 | 10 | [AI-Assisted SDD](docs/10-ai-assisted-sdd.md) | Spec Kit, Kiro, and operating SDD with agents. |
 | 11 | [Adoption & Anti-Patterns](docs/11-adoption-and-antipatterns.md) | Rollout, metrics, and failure modes. |
+| 12 | [Glossary](docs/12-glossary.md) | *Reference appendix* — the method's core vocabulary, defined. |
+| 13 | [Property Graph (21 Entities)](docs/13-property-graph-21.md) | *Reference appendix* — the glossary as nodes, relationships, Cypher, and a Mermaid diagram. |
 
 ### Templates and examples
 
