@@ -79,10 +79,13 @@ Read the `docs/` in order for the full study, or jump to the section you need.
 | 12 | [Glossary](docs/12-glossary.md) | *Reference appendix* — the method's core vocabulary, defined. |
 | 13 | [Property Graph (21 Entities)](docs/13-property-graph-21.md) | *Reference appendix* — the glossary as nodes, relationships, Cypher, and a Mermaid diagram. |
 
-### Templates and examples
+### Templates, how-to guides, and examples
 
 - [`templates/`](templates/) — copy-ready artifact templates (constitution, spec, design,
   tasks, ADR, traceability matrix, DoR/DoD checklists).
+- [`how-to/`](how-to/) — the **craft layer**: recipe-style guides for writing each artifact *well*
+  (before→after rewrites, smell tests, checklists). Read `docs/` for the theory; open a how-to when
+  you sit down to author.
 - [`examples/`](examples/) — a fully worked example feature showing every artifact populated.
 
 ---

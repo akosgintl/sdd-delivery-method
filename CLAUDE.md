@@ -11,8 +11,8 @@ not by running anything.
 
 ## Structure and how the parts relate
 
-The three directories form a study → toolkit → demonstration chain, and they cross-reference each
-other heavily:
+The four top-level content directories form a study → toolkit → craft → demonstration chain, and
+they cross-reference each other heavily:
 
 - `docs/00..11` — the numbered study, meant to be read in order. Each chapter ends with a
   `> Continue to [next]` link and links *down* to the templates/examples it describes.
@@ -24,6 +24,13 @@ other heavily:
 - `templates/` — copy-ready artifact templates (spec, design, tasks, constitution, ADR, DoR/DoD,
   glossary, traceability, vision/PRD). Each template's README row links *up* to the doc chapter
   that explains it.
+- `how-to/` — the **craft layer**: recipe-style "how to write a good X" guides for every
+  human-authored artifact. Filenames are verb-first and unnumbered (`write-ears-requirements.md`).
+  Each guide follows a fixed 8-section recipe (why it matters, when you write it, anatomy, the
+  recipe, a before→after rewrite, smell test, checklist, links) and **cross-links to** its concept
+  chapter and template rather than restating them — do not duplicate `docs/04` etc. into a guide.
+  `how-to/README.md` is the lifecycle-ordered index. All eleven guides ship: problem-statement, PRD,
+  constitution, glossary, EARS, NFRs, acceptance-criteria, spec, technical-design, tasks, DoR/DoD.
 - `examples/specs/0001-cart-persistence/` — one fully worked feature bundle (`spec.md`,
   `design.md`, `tasks.md`, `traceability.md`) demonstrating every artifact populated. The
   cart-persistence example is the canonical worked example referenced throughout `docs/04`.
