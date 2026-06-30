@@ -16,7 +16,7 @@ pile *reviewable* and *verifiable*. This is the *doing* companion to
 ## When you write it
 
 **Phase 1**, after the need is understood and before construction. One spec per
-[feature](../docs/12-glossary.md#feature) (`NNNN-kebab-case-slug`), owned by the spec author
+[feature](../docs/appendices/A-glossary.md#feature) (`NNNN-kebab-case-slug`), owned by the spec author
 (PM/BA/architect/senior engineer), reviewed by engineering and stakeholders. It's a **living**
 artifact: it carries YAML front-matter with a status that advances `draft → in-review → ready →
 in-progress → done`, and it gets updated whenever behavior changes — for the life of the feature.

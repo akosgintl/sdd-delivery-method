@@ -1,6 +1,6 @@
-# 13 — Property Graph (21 Entities)
+# B — Property Graph (21 Entities)
 
-This chapter turns the [glossary](12-glossary.md) into a **property graph** — the kind you would
+This chapter turns the [glossary](A-glossary.md) into a **property graph** — the kind you would
 load into Neo4j. It is the same vocabulary, re-expressed as **nodes** (the entities, each with
 properties) and **relationships** (typed, directed edges). Everything here is derived strictly from
 the glossary definitions; no new claims are introduced.
@@ -292,5 +292,5 @@ graph TD
 
 ---
 
-This is a reference appendix derived from the [glossary](12-glossary.md). Return to the
-[README](../README.md) for the table of contents.
+This is a reference appendix derived from the [glossary](A-glossary.md). Return to the
+[README](../../README.md) for the table of contents.

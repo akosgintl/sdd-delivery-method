@@ -32,6 +32,10 @@ agents need. Add tooling ([10](10-ai-assisted-sdd.md)) on top of the now-solid f
 > Sequencing principle: **value before ceremony.** Each stage should pay for itself before the
 > next is added. If a stage isn't earning its keep, stop and fix that before expanding.
 
+> Rolling out across **many squads with AI agents central**? The stages above still apply, but you
+> pull the tooling stage forward and expand squad-by-squad behind a shared paved road — see
+> [C — Scaling to the Enterprise](appendices/C-scaling-to-the-enterprise.md).
+
 ## 2. Anti-patterns (the failure modes)
 
 ### A. Big-spec-up-front (waterfall in disguise)
@@ -130,5 +134,6 @@ This concludes the study chapters. See [`templates/`](../templates/) for copy-re
 [`examples/`](../examples/) for a fully worked feature. Return to the [README](../README.md) for
 the table of contents.
 
-> Reference appendices: [`12 — Glossary`](12-glossary.md) defines the method's core vocabulary, and
-> [`13 — Property Graph`](13-property-graph-21.md) re-expresses it as a graph model.
+> Reference appendices: [`A — Glossary`](appendices/A-glossary.md) defines the method's core vocabulary,
+> [`B — Property Graph`](appendices/B-property-graph.md) re-expresses it as a graph model, and
+> [`C`–`G`](../README.md#how-to-read-this-repository) cover scaling, EARS, tooling, maturity, and agent prompts.

@@ -16,11 +16,16 @@ they cross-reference each other heavily:
 
 - `docs/00..11` — the numbered study, meant to be read in order. Each chapter ends with a
   `> Continue to [next]` link and links *down* to the templates/examples it describes.
-- `docs/12..13` — reference appendices derived from the study: `12-glossary.md` (the 20 most-frequent
-  entities, defined and cross-linked) and `13-property-graph-21.md` (those 20 plus `Task`, re-expressed
-  as a Neo4j-style property graph with node properties, relationships, Cypher, and a Mermaid diagram).
-  Both are grounded strictly in the study text; if you change a definition in `12`, keep `13`'s nodes
-  and edges in sync.
+- `docs/appendices/` — appendices to the study, **letter-numbered** (`A`, `B`, … not chapter numbers)
+  so the folder reads as a self-contained set rather than orphaned chapters 12+. `A-glossary.md` (the
+  20 most-frequent entities, defined and cross-linked) and `B-property-graph.md` (those 20 plus `Task`,
+  re-expressed as a Neo4j-style property graph with node properties, relationships, Cypher, and a
+  Mermaid diagram) are grounded strictly in the study text; if you change a definition in `A`, keep
+  `B`'s nodes and edges in sync. `C-scaling-to-the-enterprise.md` is an applied annex (team topology,
+  personas, governance for multi-squad, AI-central orgs); `D-ears-cheat-sheet.md`,
+  `E-tooling-comparison.md`, `F-maturity-model.md`, and `G-agent-prompt-library.md` are reference
+  cards. Appendix files use `../` to reach study chapters and `../../` to reach `README.md` /
+  `templates/`; the `README.md` chapter table indexes them as rows `A`–`G`.
 - `templates/` — copy-ready artifact templates (spec, design, tasks, constitution, ADR, DoR/DoD,
   glossary, traceability, vision/PRD). Each template's README row links *up* to the doc chapter
   that explains it.

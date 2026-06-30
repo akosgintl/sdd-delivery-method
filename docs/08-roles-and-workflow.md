@@ -20,6 +20,10 @@ and describes the reviews/ceremonies that operate the method.
 In a small team one person may hold several; in a regulated org they may be distinct with formal
 sign-off. The method cares that each is *owned*, not *who* owns it.
 
+> Scaling past one team? For mapping these responsibilities onto enterprise personas, a multi-squad
+> team topology, and governance with AI agents central, see
+> [C — Scaling to the Enterprise](appendices/C-scaling-to-the-enterprise.md).
+
 ## 2. RACI for the core artifacts
 
 `R`=Responsible, `A`=Accountable, `C`=Consulted, `I`=Informed.

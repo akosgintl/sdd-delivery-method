@@ -55,6 +55,8 @@ This study is **methodology-first and tool-agnostic**. The AI tooling is covered
 - **Product managers / business analysts** who own the upstream needs-to-requirements flow.
 - **Architects and senior engineers** who author specifications and technical designs.
 - **Teams using AI coding agents** that need a disciplined upstream to feed them.
+- **Platform / enabling teams** standing up the shared "paved road" for many squads (see
+  [appendix C](docs/appendices/C-scaling-to-the-enterprise.md)).
 
 ---
 
@@ -76,8 +78,13 @@ Read the `docs/` in order for the full study, or jump to the section you need.
 | 09 | [Quality & Traceability](docs/09-quality-and-traceability.md) | Linking need → requirement → spec → test. |
 | 10 | [AI-Assisted SDD](docs/10-ai-assisted-sdd.md) | Spec Kit, Kiro, and operating SDD with agents. |
 | 11 | [Adoption & Anti-Patterns](docs/11-adoption-and-antipatterns.md) | Rollout, metrics, and failure modes. |
-| 12 | [Glossary](docs/12-glossary.md) | *Reference appendix* — the method's core vocabulary, defined. |
-| 13 | [Property Graph (21 Entities)](docs/13-property-graph-21.md) | *Reference appendix* — the glossary as nodes, relationships, Cypher, and a Mermaid diagram. |
+| A | [Glossary](docs/appendices/A-glossary.md) | *Reference appendix* — the method's core vocabulary, defined. |
+| B | [Property Graph (21 Entities)](docs/appendices/B-property-graph.md) | *Reference appendix* — the glossary as nodes, relationships, Cypher, and a Mermaid diagram. |
+| C | [Scaling to the Enterprise](docs/appendices/C-scaling-to-the-enterprise.md) | *Applied annex* — team topology, personas, and governance for multi-squad, AI-central orgs. |
+| D | [EARS Cheat-Sheet](docs/appendices/D-ears-cheat-sheet.md) | *Reference appendix* — the five EARS patterns, modality, and banned vague words on one page. |
+| E | [Tooling Comparison Matrix](docs/appendices/E-tooling-comparison.md) | *Reference appendix* — Spec Kit / Kiro / Tessl / agent CLIs compared, with how to choose. |
+| F | [SDD Maturity Model](docs/appendices/F-maturity-model.md) | *Reference appendix* — adoption levels 0–5 with observable signals and how to advance. |
+| G | [Agent Prompt Library](docs/appendices/G-agent-prompt-library.md) | *Reference appendix* — copy-ready, tool-agnostic agent prompts for each SDD phase. |
 
 ### Templates, how-to guides, and examples
 

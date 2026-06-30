@@ -20,7 +20,7 @@ theory, open the how-to when you sit down to write.
 | [`write-a-problem-statement.md`](write-a-problem-statement.md) | problem statement & user stories | [`vision-prd.md`](../templates/vision-prd.md) | [`docs/04 §1–2`](../docs/04-from-needs-to-spec.md#1-eliciting-user-needs) |
 | [`write-a-prd.md`](write-a-prd.md) | vision / PRD | [`vision-prd.md`](../templates/vision-prd.md) | [`docs/03`](../docs/03-artifacts.md) |
 | [`write-a-constitution.md`](write-a-constitution.md) | project constitution | [`constitution.md`](../templates/constitution.md) | [`docs/01 §2`](../docs/01-principles.md#2-the-constitution) |
-| [`write-a-glossary.md`](write-a-glossary.md) | glossary / ubiquitous language | [`glossary.md`](../templates/glossary.md) | [`docs/12`](../docs/12-glossary.md) |
+| [`write-a-glossary.md`](write-a-glossary.md) | glossary / ubiquitous language | [`glossary.md`](../templates/glossary.md) | [`appendix A`](../docs/appendices/A-glossary.md) |
 | [`write-ears-requirements.md`](write-ears-requirements.md) | EARS requirements | [`specification.md`](../templates/specification.md) | [`docs/04 §4`](../docs/04-from-needs-to-spec.md#4-writing-requirements-ears) |
 | [`write-nfrs.md`](write-nfrs.md) | non-functional requirements | [`specification.md`](../templates/specification.md) | [`docs/04 §3.1`](../docs/04-from-needs-to-spec.md#31-functional-vs-non-functional) |
 | [`write-acceptance-criteria.md`](write-acceptance-criteria.md) | acceptance criteria / scenarios | [`specification.md`](../templates/specification.md) | [`docs/04 §5`](../docs/04-from-needs-to-spec.md#5-writing-requirements-bdd--gherkin-acceptance-scenarios) |
