@@ -69,9 +69,12 @@ Adopt a convention so coverage is machine-checkable. Examples:
 - Tag/annotation: `@requirement("0001/FR-3")`
 - Gherkin tag: `@FR-3` on the scenario.
 
-A CI script then asserts: *every `FR-*`/`NFR-*` in a `ready` or `done` spec is referenced by at
-least one test.* This single check turns [P3](01-principles.md#p3--every-requirement-must-be-testable)
-and [P5](01-principles.md#p5--traceability-is-maintained-end-to-end) from aspirations into gates.
+A CI script then asserts, calibrated to status: at **`ready`** every `FR-*`/`NFR-*` is *testable* and
+appears as a row (its test may still be a *planned* name — no code exists yet); at **`done`** every
+`FR-*`/`NFR-*` is referenced by a **passing** test, so the matrix's Gaps section is empty. This turns
+[P3](01-principles.md#p3--every-requirement-must-be-testable) and
+[P5](01-principles.md#p5--traceability-is-maintained-end-to-end) from aspirations into gates without
+demanding tests before the feature is built.
 
 ## 5. CI checks that enforce quality (suggested)
 
@@ -79,7 +82,7 @@ and [P5](01-principles.md#p5--traceability-is-maintained-end-to-end) from aspira
 |-------|----------|
 | Spec front-matter valid | Storage conventions ([05](05-storage-and-organization.md)) |
 | No open questions / `TBD` in `ready`/`done` specs | DoR/DoD cleanliness |
-| Every `FR-*`/`NFR-*` referenced by ≥1 test | Testability + coverage |
+| Every `FR-*`/`NFR-*` referenced by ≥1 test (planned name at `ready`; passing at `done`) | Testability + coverage |
 | Behavior-bearing code change touches a `spec.md` (warn) | Anti spec-rot ([07](07-definition-of-done.md)) |
 | ADRs append-only (no edits to `accepted` decisions) | Decision integrity |
 | `specs/README.md` index regenerated and committed | Discoverability |

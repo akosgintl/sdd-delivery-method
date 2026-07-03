@@ -86,8 +86,9 @@ The more of DoD that CI enforces, the less it relies on memory and goodwill:
 - **Tests & coverage** — CI gate on passing tests and coverage threshold.
 - **Spec-touch check** — a PR that changes behavior-bearing code but no `spec.md` gets flagged
   for human confirmation ("is this really not a behavior change?").
-- **Requirement coverage** — a script asserts every `FR-*` in `ready`/`done` specs is referenced
-  by a test (see [09 §4](09-quality-and-traceability.md)).
+- **Requirement coverage** — a script asserts every `FR-*` in a `done` spec is referenced by a
+  **passing** test (Gaps empty); at `ready` the reference may still be a planned test name (see
+  [09 §4](09-quality-and-traceability.md)).
 - **Spec lint** — no open questions / `TBD` in a `done` spec; front-matter valid; status
   consistent.
 - **Security/lint/type gates** — standard CI.
