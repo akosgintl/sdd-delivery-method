@@ -28,7 +28,8 @@ then `traceability-writer` regenerates). Never ask to hand-edit the matrix to cl
    `traceability.review-NN.md`; write `traceability.review-<highest+1>.md`.
 2. **Run the audit checks** in `../_shared/traceability/checklist.md`:
    - forward completeness (every spec `FR`/`NFR` is a row);
-   - coverage gap (a requirement with no test) — `[BLOCKER]` for a `ready`/`done` target;
+   - coverage gap (a requirement with no test) — `[BLOCKER]` for a `done` / in-progress target; at
+     `ready` (no code exists yet) a planned-but-untested row is expected, so record it `MINOR`/note;
    - backward completeness (no code without a requirement);
    - ID drift (matrix ids not defined in spec/tasks);
    - test-naming convention; `Verified` consistency with status.

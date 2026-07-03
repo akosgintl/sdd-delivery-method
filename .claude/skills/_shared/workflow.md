@@ -35,6 +35,11 @@ repeat:
 - **Approval rule:** BLOCKER and MAJOR block; MINOR is the author's discretion.
 - **CAP:** default **3** rounds. On cap-out, do not force an approval — stop and hand the open
   `review-NN.md` to a human. This prevents writer/reviewer ping-pong.
+- **On approval, advance status.** When the loop reaches `approved`, the driver advances the
+  artifact's front-matter `status` to the next lifecycle value (spec `in-review → ready`, design
+  `in-review → agreed`, tasks `draft → ready`, problem-statement/PRD `draft → agreed/active`) and
+  refreshes its `updated:` date. Approval that leaves `status` untouched makes a finished artifact
+  look un-progressed and blocks the next gate.
 
 ## Non-trio shapes
 

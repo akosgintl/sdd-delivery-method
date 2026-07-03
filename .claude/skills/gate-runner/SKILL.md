@@ -37,8 +37,11 @@ governs progression — it does not fix anything (that's the artifact's own writ
 4. **Set the outcome:** `verdict: pass` if no criterion fails; else `verdict: blocked`.
 
 ## Output contract
-- **DoD (audit trail):** write a gate report `<feature>.dod-gate-NN.md` next to the feature per the
-  `../_shared/review-format.md` gate-report variant. **DoR:** report inline (persist a
-  `<spec>.dor-gate-NN.md` only if the user wants a record).
+- **DoD (audit trail):** write a gate report per the `../_shared/review-format.md` gate-report
+  variant. When the feature is a **folder** (the usual case), place it *inside* that folder as
+  `dod-gate-NN.md` — the folder already names the feature, so drop the `<feature>.` prefix. Only when
+  the feature is a bare file do you prefix (`<feature>.dod-gate-NN.md`). **DoR:** report inline;
+  persist a record only if the user wants one — `dor-gate-NN.md` next to the spec, or a single
+  consolidated `dor-gate-NN.md` at the `specs/` root when gating a batch of specs at once.
 - Report the verdict and, on `blocked`, the failing criteria and where to fix them (a DoR failure
   bounces to the spec loop; a DoD failure bounces to the offending artifact).

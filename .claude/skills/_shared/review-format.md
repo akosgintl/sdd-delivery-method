@@ -67,8 +67,10 @@ applyable suggestion), and `resolved: [ ]`.
 The rewriter, working from the highest-numbered review file:
 1. Applies each unresolved finding's `fix` to the artifact.
 2. Flips that finding's `resolved: [ ]` → `resolved: [x]` **in place** (never deletes it).
-3. Leaves `verdict` as-is — the *next* reviewer round re-judges and writes a new `review-NN.md`.
-4. If a finding cannot be resolved in this artifact (root cause is upstream), it does **not**
+3. Refreshes the artifact's front-matter `updated:` date to the rewrite date (leave `status` for the
+   loop to advance on approval — see `workflow.md`).
+4. Leaves `verdict` as-is — the *next* reviewer round re-judges and writes a new `review-NN.md`.
+5. If a finding cannot be resolved in this artifact (root cause is upstream), it does **not**
    fake a fix: it adds an `escalation:` line naming the upstream artifact and leaves `resolved: [ ]`.
 
 ## Variants

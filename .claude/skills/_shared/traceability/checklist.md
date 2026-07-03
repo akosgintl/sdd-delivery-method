@@ -25,7 +25,10 @@ it and re-running the writer is how it is "regenerated". Uses `../_shared/conven
 - **Forward completeness:** every `FR`/`NFR` defined in the spec appears as exactly one forward row.
   A spec requirement missing from the matrix ⇒ regenerate. `[BLOCKER]`
 - **Coverage gap:** a requirement with no test in its row. The fix is **upstream** — add a test/task
-  in spec/tasks; do not fake a test id here. `[BLOCKER]` (for a `done`/`ready` target)
+  in spec/tasks; do not fake a test id here. `[BLOCKER]` for a `done` / in-progress target. **At
+  `ready`** (spec ready-to-build, no code yet) a fully-planned-but-untested row is the *expected*
+  state, not a blocker — record it as a `MINOR`/note. The gap becomes a BLOCKER once the feature is
+  being verified toward `done`.
 - **Backward completeness:** every code/module entry realizes ≥1 requirement; code with no
   requirement is flagged (deletion candidate or a missing requirement). `[MAJOR]`
 - **ID drift:** any `FR`/`NFR`/`T` id in the matrix that the spec/tasks do not define. `[BLOCKER]`
