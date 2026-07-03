@@ -34,11 +34,24 @@ they cross-reference each other heavily:
   Each guide follows a fixed 8-section recipe (why it matters, when you write it, anatomy, the
   recipe, a before→after rewrite, smell test, checklist, links) and **cross-links to** its concept
   chapter and template rather than restating them — do not duplicate `docs/04` etc. into a guide.
-  `how-to/README.md` is the lifecycle-ordered index. All eleven guides ship: problem-statement, PRD,
-  constitution, glossary, EARS, NFRs, acceptance-criteria, spec, technical-design, tasks, DoR/DoD.
+  `how-to/README.md` is the lifecycle-ordered index. All twelve guides ship: problem-statement, PRD,
+  constitution, glossary, EARS, NFRs, acceptance-criteria, spec, technical-design, tasks,
+  traceability-matrix, DoR/DoD.
 - `examples/specs/0001-cart-persistence/` — one fully worked feature bundle (`spec.md`,
   `design.md`, `tasks.md`, `traceability.md`) demonstrating every artifact populated. The
   cart-persistence example is the canonical worked example referenced throughout `docs/04`.
+- `.claude/skills/` — the **executable layer**: 26 [Agent Skills](https://agentskills.io/specification)
+  (`<artifact>-writer/reviewer/rewriter` for spec/design/tasks/prd/problem-statement; writer+reviewer
+  for constitution/adr; writer+generator-audit for traceability; writer+maintainer for glossary;
+  gates-writer+gate-runner; and an `sdd-loop` driver). Skills are **self-contained** — they never
+  reference `docs/`/`templates/`/`how-to/`/`examples/`; all bundled knowledge lives in
+  `.claude/skills/_shared/` (`review-format.md`, `workflow.md`, `conventions.md`, `ears.md`,
+  `banned-words.md`, `gherkin.md`, and a `<artifact>/{template,checklist,example}.md` set), reached
+  with `../_shared/…`. Reviewers emit sequence-numbered `<artifact>.review-NN.md` findings; rewriters
+  apply and check them off. `_shared/` **deliberately duplicates** rules that also live in the study
+  (the one place this repo breaks "cross-links over duplication", for portability) — **sync
+  obligation:** when a rule changes in `docs/` (e.g. the banned-word list, EARS patterns, a status
+  vocabulary), update its `_shared/` copy too. `.claude/skills/README.md` is the runbook + index.
 
 `README.md` is the front door: its table maps each chapter number to the question it answers. Keep
 that table and the per-chapter "Continue to" links consistent when adding or reordering docs.

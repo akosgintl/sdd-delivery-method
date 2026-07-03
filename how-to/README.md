@@ -27,9 +27,10 @@ theory, open the how-to when you sit down to write.
 | [`write-a-spec.md`](write-a-spec.md) | the whole `spec.md` | [`specification.md`](../templates/specification.md) | [`docs/04 §6`](../docs/04-from-needs-to-spec.md#6-assembling-the-specification) |
 | [`write-a-technical-design.md`](write-a-technical-design.md) | `design.md` + ADRs | [`technical-design.md`](../templates/technical-design.md) | [`docs/03`](../docs/03-artifacts.md) |
 | [`write-tasks.md`](write-tasks.md) | task breakdown | [`tasks.md`](../templates/tasks.md) | [`docs/03`](../docs/03-artifacts.md) |
+| [`write-a-traceability-matrix.md`](write-a-traceability-matrix.md) | traceability matrix | [`traceability-matrix.md`](../templates/traceability-matrix.md) | [`docs/09`](../docs/09-quality-and-traceability.md) |
 | [`write-dor-dod-gates.md`](write-dor-dod-gates.md) | the DoR & DoD gates | [`definition-of-ready.md`](../templates/definition-of-ready.md) | [`docs/06`](../docs/06-definition-of-ready.md) |
 
-All eleven guides are ready. Filenames are verb-first and unnumbered — these are a parallel toolkit,
+All twelve guides are ready. Filenames are verb-first and unnumbered — these are a parallel toolkit,
 not a linear study.
 
 ---

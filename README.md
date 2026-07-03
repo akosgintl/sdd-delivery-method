@@ -94,6 +94,10 @@ Read the `docs/` in order for the full study, or jump to the section you need.
   (before→after rewrites, smell tests, checklists). Read `docs/` for the theory; open a how-to when
   you sit down to author.
 - [`examples/`](examples/) — a fully worked example feature showing every artifact populated.
+- [`.claude/skills/`](.claude/skills/) — the **executable layer**: 26 [Agent Skills](https://agentskills.io/specification)
+  (writer / reviewer / rewriter, plus generator, gate-runner, maintainer, and an `sdd-loop` driver)
+  that draft, critique, and repair the artifacts through a write→review→rewrite loop. Self-contained
+  under `.claude/skills/_shared/`. See its [README](.claude/skills/README.md).
 
 ---
 
