@@ -19,7 +19,9 @@ Each is pass/fail; any fail ⇒ the item is **blocked** (not Ready).
 - **DoR-5 acceptance:** acceptance criteria exist and map 1:1 to requirement IDs.
 - **DoR-6 edges:** edge/error behavior covered, not just the happy path.
 - **DoR-7 scope:** goals **and** non-goals both stated.
-- **DoR-8 open questions:** §10 is **empty**; no `TBD` (BLOCKER if `status` is `ready`/beyond).
+- **DoR-8 open questions:** §10 is **empty**; no `TBD` — **and no latent open question hides outside
+  §10** (a hedge like `(design; flagged)` or an unresolved "A **or** B" choice in §4/§7/§8/§11 counts
+  as an open question). BLOCKER if `status` is `ready`/beyond.
 - **DoR-9 glossary:** terms align with the glossary; contested terms defined.
 - **DoR-10 feasible & agreed:** dependencies identified; conforms to the constitution (or a recorded
   ADR exception exists); reviewed by engineering + product owner.

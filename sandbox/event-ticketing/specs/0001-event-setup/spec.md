@@ -4,7 +4,7 @@ title: Event setup — create an event with venue, capacity, and on-sale window
 status: ready
 owner: eng-catalog
 created: 2026-07-03
-updated: 2026-07-03
+updated: 2026-07-04
 need: ../../discovery/prd-event-ticketing.md#6-feature-breakdown--specs
 supersedes: null
 ---
@@ -38,9 +38,16 @@ parent record every other feature references. It carries no money or inventory l
   shall move the event to `published`.
 - **FR-5:** If an organizer attempts to publish an event with no ticket type, then the system shall
   reject the publish and shall not change the event state.
-- **FR-6:** While an event is `published` and the current time is outside its on-sale window, the
-  system shall present the event as not-yet-on-sale or closed and shall not accept seat selections.
+- **FR-6:** While a published event's current time is before its on-sale window, the system shall
+  present the event as not-yet-on-sale.
 - **FR-7:** The system shall assign each event a globally unique, immutable event identifier on creation.
+- **FR-8:** When a published event's on-sale window end passes, the system shall transition the event
+  to the `closed` state.
+- **FR-9:** While a published event's current time is outside its on-sale window, the system shall not
+  accept ticket purchases (seat selections for seated events or admissions for capacity-only events).
+- **FR-10:** While an event is `closed`, the system shall present the event as closed.
+- **FR-11:** If an organizer edits a published event's start datetime while a Reservation exists for
+  that event, then the system shall reject the edit.
 
 ## 5. Non-functional requirements
 - **NFR-1:** 95% of event-create and publish operations shall complete within 500 ms.
@@ -64,23 +71,29 @@ Scenario: Reject an inverted on-sale window                    # verifies FR-2
 - [ ] An event with a past start datetime is rejected (FR-3).
 - [ ] Publishing a draft event that has ≥1 ticket type moves it to published (FR-4).
 - [ ] Publishing an event with no ticket type is rejected (FR-5).
-- [ ] Outside the on-sale window a published event refuses seat selection (FR-6).
+- [ ] Before its on-sale window a published event is presented as not-yet-on-sale (FR-6).
+- [ ] When the on-sale window end passes, the event transitions to `closed` (FR-8).
+- [ ] Outside its on-sale window a published event refuses ticket purchases — seat selections or capacity admissions (FR-9).
+- [ ] While `closed`, the event is presented as closed (FR-10).
+- [ ] Editing a published event's start while a Reservation exists is rejected (FR-11).
 - [ ] Each created event has a unique immutable id (FR-7, NFR-2).
 - [ ] Create/publish complete < 500 ms for 95% of requests (NFR-1).
 - [ ] Organizer setup screens pass an axe WCAG 2.2 AA scan (NFR-3).
 
 ## 7. Edge cases & error behavior
 - **On-sale start == end:** rejected (FR-2, boundary).
-- **Publish exactly at on-sale start:** sales open (FR-6 boundary).
+- **Publish exactly at on-sale start:** sales open (FR-9 boundary).
 - **Timezone of start datetime:** stored and evaluated in UTC; organizer's local zone recorded for display.
-- **Editing a published event's start:** allowed only while no Reservation exists (design detail; flagged here).
+- **Editing a published event's start while a Reservation exists:** rejected (FR-11).
 
 ## 8. Data & interfaces
 - Event = {`eventId`, `title`, `startAt`, `capacityModel` ∈ {seated, capacity-only}, `onSaleStart`,
   `onSaleEnd`, `state` ∈ {draft, published, closed}, `timezone`}.
 
 ## 9. Dependencies & assumptions
-- Dependencies: none upstream; `0002` and `0003` depend on this.
+- Dependencies: the ticket-type concept from `0002-ticket-types-pricing` — FR-4/FR-5 test whether an
+  event has ≥ 1 ticket type (0001 does not define or manage ticket types; that stays 0002's job, per
+  §3). In turn, `0002` and `0003` build on this event record.
 - Assumptions: an organizer account already exists and is authenticated.
 
 ## 10. Open questions

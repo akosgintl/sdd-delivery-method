@@ -4,7 +4,7 @@ title: Checkout and payment — price-first flow with idempotent charge
 status: ready
 owner: eng-billing
 created: 2026-07-03
-updated: 2026-07-03
+updated: 2026-07-04
 need: ../../discovery/prd-event-ticketing.md#6-feature-breakdown--specs
 supersedes: null
 ---
@@ -34,21 +34,28 @@ through the billing adapter, and converts the Holds to Reservations. It is the c
   total (ticket prices plus fees) before requesting any payment detail.
 - **FR-2:** When a buyer submits payment for their Holds, the system shall charge the buyer through
   the billing adapter for exactly the displayed total.
-- **FR-3:** When the charge succeeds, the system shall create one Order and convert each of the
-  buyer's Holds to a Reservation.
+- **FR-3:** When the charge succeeds, the system shall create exactly one Order.
 - **FR-4:** If the buyer submits a checkout whose idempotency key was already processed, then the
   system shall return the existing Order and shall not charge again.
 - **FR-5:** If any of the buyer's Holds has expired before payment succeeds, then the system shall
-  reject the checkout, shall not charge the buyer, and shall report which seats were lost.
+  reject the checkout and shall not charge the buyer.
 - **FR-6:** If the billing adapter declines or does not respond within 5 s, then the system shall
-  cancel the attempt, shall not create an Order, and shall keep the Holds until their normal expiry.
+  cancel the attempt and shall not create an Order.
 - **FR-7:** The system shall record every charge attempt in an audit log with its Order (if any) and
   idempotency key.
 - **FR-8:** The system shall store no payment-card PAN; it shall persist only the PSP charge token.
+- **FR-9:** When the charge succeeds, the system shall convert each of the buyer's Holds to a
+  Reservation.
+- **FR-10:** When a checkout is rejected because a Hold has expired (FR-5), the system shall report to
+  the buyer which seats were lost.
+- **FR-11:** When the billing adapter declines or times out (FR-6), the system shall keep the buyer's
+  Holds until their normal expiry.
+- **FR-12:** If the charge succeeds but the Order is not persisted, then the system shall reverse the
+  charge and shall not create an Order.
 
 ## 5. Non-functional requirements
-- **NFR-1:** 95% of checkout submissions shall receive a terminal response within 3 s, excluding
-  third-party PSP time; p99 < 800 ms for the platform's own processing.
+- **NFR-1:** Excluding third-party PSP time, 95% of checkout submissions shall complete within 800 ms
+  and 99% within 1.5 s.
 - **NFR-2:** Duplicate submission of the same checkout (same idempotency key) shall result in exactly
   one charge, verified by a test submitting the same request 100 times.
 - **NFR-3:** The system shall store no PAN at rest (constitution Q-4), verified by a data-catalog scan.
@@ -62,33 +69,35 @@ Scenario: Price shown before payment details                   # verifies FR-1
   When they open checkout
   Then the itemized total including fees shall be shown before any card field
 
-Scenario: Successful payment creates one Order                 # verifies FR-2, FR-3
+Scenario: Successful payment creates one Order                 # verifies FR-2, FR-3, FR-9
   Given a buyer holds two seats and the charge will succeed
   When they submit payment
-  Then exactly one Order shall be created and both Holds shall become Reservations
+  Then the buyer shall be charged exactly the displayed itemized total
+  And exactly one Order shall be created
+  And both Holds shall become Reservations
 
 Scenario: Duplicate submit charges once                        # verifies FR-4, NFR-2
   Given a checkout with idempotency key K has succeeded
   When the same checkout with key K is submitted 100 times
   Then exactly one charge shall have occurred and each response returns the same Order
 
-Scenario: Expired hold blocks checkout                         # verifies FR-5
+Scenario: Expired hold blocks checkout                         # verifies FR-5, FR-10
   Given a buyer whose Hold on seat A12 has expired
   When they submit payment
   Then no charge shall occur and the buyer shall be told A12 was lost
 ```
-- [ ] PSP decline/timeout cancels the attempt, creates no Order, keeps Holds (FR-6).
+- [ ] PSP decline/timeout cancels the attempt and creates no Order (FR-6); the buyer's Holds are kept until normal expiry (FR-11).
+- [ ] If the Order write fails after a successful charge, the charge is reversed and no Order is created (FR-12).
 - [ ] Every charge attempt is audit-logged with key (FR-7).
 - [ ] No PAN persisted; only PSP token stored (FR-8, NFR-3).
-- [ ] 95% of submissions terminal < 3 s excluding PSP; p99 own-processing < 800 ms (NFR-1).
+- [ ] Excluding PSP time, 95% of submissions complete < 800 ms and 99% < 1.5 s (NFR-1).
 - [ ] Checkout screens pass an axe WCAG 2.2 AA scan (NFR-4).
 
 ## 7. Edge cases & error behavior
 - **Hold expires mid-payment:** checkout rejected, no charge (FR-5).
 - **PSP timeout:** attempt cancelled, Holds retained (FR-6).
 - **Network retry / double-click:** idempotency key collapses to one charge (FR-4/NFR-2).
-- **Partial success (charge ok, Order write fails):** reconciled to one Order or a full reversal
-  (design/ADR territory; flagged).
+- **Partial success (charge ok, Order write fails):** the charge is reversed and no Order is created (FR-12).
 
 ## 8. Data & interfaces
 - Order = {`orderId`, `buyerId`, `eventId`, `lines[]`, `feeMinorUnits`, `totalMinorUnits`,
@@ -105,5 +114,7 @@ Scenario: Expired hold blocks checkout                         # verifies FR-5
 (none)
 
 ## 11. Rationale / decisions
-- Charge-then-reserve vs reserve-then-charge ordering and the charge/Order-write atomicity are
-  significant → captured in design; a dedicated ADR is raised if the design surfaces a hard tradeoff.
+- **Ordering & atomicity (decided):** the buyer is charged first; Order creation and Hold→Reservation
+  conversion happen only on charge success (FR-2 → FR-3/FR-9). If the Order write fails after a
+  successful charge, the charge is reversed and no Order is created (FR-12). This is the observable
+  contract; no separate ADR is required.

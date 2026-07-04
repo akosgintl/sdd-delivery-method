@@ -123,9 +123,29 @@ separate the default from the range; the data model gains `removed`/`rejected` s
 re-review confirms `approved`, and the spec returns to `ready`. See `0005-waitlist/spec.review-02.md`
 (independent), the rewritten `spec.md`, and `spec.review-03.md`.
 
+### Extended to 0001 and 0004 — three for three
+
+The same independent-reviewer treatment was then applied to the other two specs the critique flagged.
+**Every same-context "approved" was overturned by a cold read**, and each cold read found a *real
+contradiction* the self-review had written and not seen:
+
+| Spec | Same-context self-review | Independent re-review | A contradiction only the cold read caught |
+|------|--------------------------|-----------------------|-------------------------------------------|
+| 0005 waitlist | approved (1 MINOR) | changes-requested — BLOCKER 1, MAJOR 4, MINOR 2 | FR-5 hard-coded 300 s vs NFR-3 configurable |
+| 0004 checkout | approved (1 MINOR) | changes-requested — BLOCKER 2, MAJOR 4, MINOR 1 | NFR-1 "95% < 3 s" vs "p99 < 800 ms" (same measurement); **plus a 2nd latent open question** in §11 |
+| 0001 event-setup | approved (1 MINOR) | changes-requested — BLOCKER 1, MAJOR 2, MINOR 3 | §9 "none upstream" while FR-4/FR-5 gate on ticket-types (0002) |
+
+All three were then rewritten from the independent findings (compound FRs split, latent questions
+resolved as real FRs, contradictions reconciled) and re-reviewed to `approved`; each carries an
+independent `spec.review-03.md` and an approving `spec.review-04.md` (0005 used review-02/03). This is
+as clean a demonstration as one could want that **a self-review's green verdict is close to
+worthless** — the format was fine every time; the judgment was not.
+
 **Takeaway (now baked into the skills):** `sdd-loop` and `workflow.md` were updated to require the
 reviewer step to run with fresh eyes — ideally a separate sub-agent given only the artifact + rules.
-It is the single highest-leverage improvement this exercise produced.
+It is the single highest-leverage improvement this exercise produced. The DoR gate criterion
+(`_shared/gates/gate-criteria.md` DoR-8) and the spec checklist were also hardened to catch a latent
+open question hiding *outside* §10 — the exact defect the gate had waved through three times.
 
 ## Prioritized suggestions
 
