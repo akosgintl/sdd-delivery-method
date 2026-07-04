@@ -64,7 +64,8 @@ re-review.
 ## `_shared/` — the bundled knowledge
 
 `review-format.md` (findings schema + severities + `review-NN` sequencing), `workflow.md`,
-`conventions.md` (IDs, status vocab, test-naming), `ears.md`, `banned-words.md`, `gherkin.md`, and a
+`conventions.md` (IDs, status vocab, test-naming), `ears.md`, `banned-words.md`, `gherkin.md`,
+`SYNC.md` (the `_shared` ↔ study sync map — which rule mirrors which `docs/` section), and a
 `<artifact>/{template,checklist,example}.md` set per artifact (plus `gates/`).
 
 > **Sync obligation.** `_shared/` deliberately *duplicates* rules that also live in the study's

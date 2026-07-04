@@ -31,6 +31,14 @@ testable description of intended behavior — the contract. It describes **what*
 - **Only the happy path.** §7 empty or thin; no boundary or error behavior. `[MAJOR]`
 - **Acceptance criteria that don't map to IDs**, or a requirement with no verifying criterion. `[MAJOR]`
 - **Anything in §10 Open questions** while `status` is `ready`/`done`. `[BLOCKER]`
+- **A latent open question *outside* §10** — a hedge (`(design; flagged)`, `TBD`, an unresolved
+  "A **or** B" choice) in §4/§7/§8/§11 while §10 says none and `status` is `ready`/`done`. It's an
+  open question in disguise. `[BLOCKER]`
+- **An internal contradiction** — two normative lines fixing the same value differently (e.g. an FR
+  hard-coding `300 s` while an NFR makes it configurable). `[MAJOR]`
+- **A compound FR joining two *distinct behaviors*** with "and"/"or" ("expire the offer **and**
+  extend the next") — split; each needs its own check. (The "shall X **and shall not** Y" prohibition
+  pairing about one behavior is fine.) `[MAJOR]`
 - **An FR not in EARS form / not testable**, or using "should/may" instead of "shall". `[BLOCKER]`
 - **Banned vague words** left un-quantified in a normative line. `[MAJOR]`
 - **Unquantified NFR.** `[MAJOR]`
@@ -42,9 +50,12 @@ testable description of intended behavior — the contract. It describes **what*
 - [ ] Front-matter complete; `status` in the legal vocabulary; `updated` current; `need` links up.
 - [ ] Every requirement has a stable `FR-n`/`NFR-n` ID and is singular, unambiguous, and testable.
 - [ ] Every FR uses one of the five EARS patterns with **shall** / **shall not**.
+- [ ] No FR joins two distinct behaviors with "and"/"or" (the "shall X and shall not Y" prohibition
+      pairing about one behavior excepted); no two normative lines contradict on a value.
 - [ ] Goals **and** non-goals are both stated.
 - [ ] Happy path, boundaries, and error behavior are all covered (§4 + §7).
 - [ ] NFRs are quantified; banned vague words are gone or defined.
 - [ ] Acceptance criteria map 1:1 to requirements (every ID ↔ ≥1 criterion).
-- [ ] Open questions are empty (or the spec is explicitly `draft`).
+- [ ] Open questions are empty (or the spec is explicitly `draft`) — and no hedge/undecided choice
+      ("(design; flagged)", "TBD", "A or B") lurks outside §10.
 - [ ] It traces up to a need and down to tests.

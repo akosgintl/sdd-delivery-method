@@ -41,6 +41,21 @@ the control flow, the cap, and the escalation rules; the sibling skills contribu
 4. **Never fabricate approval.** Approval comes only from a reviewer verdict with no unresolved
    BLOCKER/MAJOR.
 
+## Reviewer independence (do not skip)
+
+A reviewer that shares the writer's context does not *judge* — it rationalizes what it just wrote, and
+misses exactly the defects it was blind to as author (a self-review "finds" only what it already
+knew). To get real judgment:
+
+- **Run the `<type>-reviewer` step with fresh eyes** — ideally as a **separate sub-agent / session**
+  given only the artifact under review plus the `../_shared/…` rule files (checklist, EARS,
+  banned-words, gherkin, conventions, glossary). **Do not** hand the reviewer the writer's rationale,
+  the draft's commit message, or "what I was going for."
+- Same-context self-review is the **weakest** form; use it only for low-risk artifacts, and treat its
+  green verdicts with suspicion (a clean self-review is weak evidence, not proof).
+- If the reviewer keeps approving on round 1 with only MINORs, that is a smell the review lacked
+  independence — re-review from a cold start.
+
 ## Output contract
 - Report the outcome: `approved` (with round count) or `capped`/`escalated` (with the open review
   file and remaining findings). Leave every `review-NN.md` in place as the audit trail.

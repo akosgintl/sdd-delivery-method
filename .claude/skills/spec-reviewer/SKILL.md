@@ -32,6 +32,11 @@ the spec (that is `spec-rewriter`'s job).
    - acceptance criteria map 1:1 to `FR`/`NFR` IDs;
    - goals **and** non-goals present; happy/boundary/error covered;
    - §10 empty when `status` is `ready`/`done`;
+   - **internal consistency & latent open questions:** no two normative lines fix the same value
+     differently (e.g. an FR hard-coding `300 s` while an NFR makes it configurable); no FR joins two
+     distinct behaviors with "and"/"or"; and **no hedge lurks outside §10** — a `(design; flagged)`,
+     `TBD`, or unresolved "A **or** B" choice anywhere in §4/§7/§8/§11 while §10 says none and
+     `status` is `ready`/`done` is a `[BLOCKER]` (an open question in disguise);
    - IDs stable, singular, no drift vs anything that references them.
 3. **Record each violation as a finding** — severity (`BLOCKER`/`MAJOR`/`MINOR`), the id/section,
    a one-line defect, `file:line`, the `rule:` (with its `../_shared/…` source), a concrete

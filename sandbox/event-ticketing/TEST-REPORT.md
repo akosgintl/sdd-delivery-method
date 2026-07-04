@@ -76,5 +76,16 @@ writer→reviewer→rewriter→re-review cycle. No fabricated approvals; cap of 
 
 All 26 skills fired and produced conformant artifacts; the write→review→rewrite loop, the non-trio
 shapes (generator+audit, writer+reviewer, writer+maintainer, writer+runner), and the DoD block all
-behaved as designed. **No ❌ defects.** The only rule inconsistency worth fixing is **T-1**
-(traceability rubric treating `ready` like `done`); T-2–T-4 are small contract/wording clarifications.
+behaved as designed. The rule inconsistencies found were **T-1** (traceability rubric treating
+`ready` like `done`) and the T-2–T-4 contract/wording clarifications.
+
+## ⚠️ Correction (added after a skeptical re-review)
+
+The "No ❌ defects / all green" framing above is **not trustworthy as a quality verdict** — see
+[`REVIEW-CRITIQUE.md`](./REVIEW-CRITIQUE.md). This report is a **format-conformance** check written by
+the same context that authored the artifacts and then reviewed its own writing; the reviews were
+choreographed rather than independent. A skeptical second pass found real defects this report missed:
+latent open questions in `ready` specs (0005 §7, 0004 §7, 0001 §7) that the DoR gate should have
+blocked, compound/soft FRs (0005 FR-5/FR-7/FR-1) waved through as MINORs, and an unremarked
+0003↔0004 dependency cycle. Treat the ✅ table as "the artifacts match the templates," **not** as "an
+independent reviewer found nothing." The critique supersedes this report's conclusion.

@@ -45,7 +45,11 @@ requirement to name its trigger and its observable response. Every EARS requirem
 
 - **No trigger** — a When/While/If line whose precondition is fuzzy ("when appropriate").
 - **Unobservable response** — "shall handle / support / manage / process".
-- **"and" / "and/or" / "etc."** — compound or open-ended; split or close it.
+- **"and" / "and/or" / "etc."** — compound or open-ended; split or close it. Joining two *distinct
+  behaviors* under one ID ("expire the offer **and** extend the next", "convert the Hold **and** route
+  to checkout") is a `[MAJOR]` split — each behavior needs its own pass/fail check and its own `FR`.
+  The **one** sanctioned compound is the prohibition pairing **"shall X and shall not Y"** about the
+  *same* behavior (e.g. "shall hold the seat and shall not offer it to anyone else").
 - **A quality, not a behavior** — "shall be fast/secure/scalable" is an NFR; quantify and move it.
 - **No error case** — only happy-path FRs = half-specified. Add the If/Then lines.
 - **"should" / "may" / "could"** — negotiable words; requirements use **shall / shall not**.

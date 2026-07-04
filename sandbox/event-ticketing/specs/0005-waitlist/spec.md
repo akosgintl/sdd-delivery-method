@@ -4,7 +4,7 @@ title: Waitlist — join a sold-out ticket type and receive ordered offers
 status: ready
 owner: eng-inventory
 created: 2026-07-03
-updated: 2026-07-03
+updated: 2026-07-04
 need: ../../discovery/prd-event-ticketing.md#6-feature-breakdown--specs
 supersedes: null
 ---
@@ -38,21 +38,30 @@ glossary.
   shall create a time-limited offer to the buyer at the front of the Waitlist.
 - **FR-4:** While an offer is outstanding, the system shall hold the released inventory for that buyer
   and shall not offer it to anyone else.
-- **FR-5:** If an offer is not accepted within its offer window of 300 s, then the system shall expire
-  the offer and shall extend the next offer to the following buyer on the Waitlist.
+- **FR-5:** If an offer is not accepted within its offer window, then the system shall expire the
+  offer.
 - **FR-6:** When a buyer accepts an outstanding offer, the system shall convert the held inventory
-  into a Hold for that buyer and route them to checkout.
-- **FR-7:** When a buyer accepts or the Waitlist is exhausted, the system shall remove satisfied or
-  offered buyers from the Waitlist so no buyer is offered the same release twice.
+  into a Hold for that buyer.
+- **FR-7:** When a buyer accepts an offer, the system shall remove that buyer's entry from the
+  Waitlist.
 - **FR-8:** The system shall preserve Waitlist order: an earlier-joined buyer shall be offered
   released inventory before a later-joined buyer.
+- **FR-9:** When an offer expires while the Waitlist is still non-empty, the system shall extend a new
+  offer to the next buyer on the Waitlist.
+- **FR-10:** If a buyer who already holds a `waiting` or `offered` entry for a ticket type requests to
+  join that Waitlist again, then the system shall reject the second request and shall retain the
+  existing entry's position.
+- **FR-11:** When a buyer's held inventory is converted into a Hold (FR-6), the system shall route
+  that buyer to checkout.
+- **FR-12:** When the Waitlist is exhausted while released inventory remains unclaimed, the system
+  shall return the remaining inventory to open sale.
 
 ## 5. Non-functional requirements
 - **NFR-1:** When inventory is released, the first offer shall be created within 10 s.
 - **NFR-2:** Waitlist ordering shall be strict FCFS: for any two buyers, the earlier `joinedAt` is
   offered first, verified by an ordering test over ≥ 1,000 entries.
-- **NFR-3:** An offer window shall be 300 s and shall be configurable per event between 60 s and
-  900 s.
+- **NFR-3:** The default offer window shall be 300 s.
+- **NFR-4:** The offer window shall be configurable per event within the range 60 s to 900 s.
 
 ## 6. Acceptance criteria / scenarios
 
@@ -68,26 +77,30 @@ Scenario: Released seat is offered to the front               # verifies FR-3, F
   Then a time-limited offer shall be created for the front buyer
   And that seat shall not be offered to anyone else while the offer stands
 
-Scenario: Unaccepted offer rolls to the next buyer            # verifies FR-5
-  Given an outstanding offer to buyer X
+Scenario: Unaccepted offer expires and rolls to the next buyer   # verifies FR-5, FR-9
+  Given an outstanding offer to buyer X with a 300 s window
   When 300 s pass without acceptance
-  Then the offer shall expire and the next buyer shall receive an offer
+  Then the offer to buyer X shall expire
+  And an offer shall be extended to the next buyer on the Waitlist
 ```
-- [ ] Accepting an offer creates a Hold and routes to checkout (FR-6).
-- [ ] Satisfied/offered buyers are removed so none is offered the same release twice (FR-7).
+- [ ] Accepting an offer converts held inventory into a Hold (FR-6).
+- [ ] After converting, the buyer is routed to checkout (FR-11).
+- [ ] On accept, the buyer's Waitlist entry is removed (FR-7).
+- [ ] A repeat join while already `waiting`/`offered` is rejected and keeps the original position (FR-10).
+- [ ] When the Waitlist is exhausted with inventory left, the remainder returns to open sale (FR-12).
 - [ ] First offer created within 10 s of release (NFR-1).
 - [ ] Strict FCFS ordering across ≥1,000 entries (NFR-2).
-- [ ] Offer window is 300 s, configurable 60–900 s (NFR-3).
+- [ ] Default offer window is 300 s (NFR-3); configurable within 60–900 s (NFR-4).
 
 ## 7. Edge cases & error behavior
 - **Multiple seats released at once:** offers created to the front N buyers in order (FR-3/FR-8).
 - **Front buyer already bought elsewhere:** offer still made; expiry rolls to next (FR-5).
-- **Waitlist exhausted before inventory consumed:** remaining released inventory returns to open sale (FR-7).
-- **Buyer joins twice:** second join rejected or deduplicated (design; flagged).
+- **Waitlist exhausted before inventory consumed:** remaining released inventory returns to open sale (FR-12).
+- **Buyer joins twice while already `waiting`/`offered`:** the second request is rejected and the original position is kept (FR-10).
 
 ## 8. Data & interfaces
 - WaitlistEntry = {`waitlistId`, `ticketTypeId`, `buyerId`, `joinedAt`, `position`, `state` ∈
-  {waiting, offered, accepted, expired}}.
+  {waiting, offered, accepted, expired, removed, rejected}}.
 - Consumes `seat.released` (from `0003`/`0006`); produces a Hold (into `0003`) on acceptance.
 
 ## 9. Dependencies & assumptions

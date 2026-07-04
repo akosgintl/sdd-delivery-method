@@ -40,6 +40,11 @@ repeat:
   `in-review → agreed`, tasks `draft → ready`, problem-statement/PRD `draft → agreed/active`) and
   refreshes its `updated:` date. Approval that leaves `status` untouched makes a finished artifact
   look un-progressed and blocks the next gate.
+- **Review with fresh eyes.** The reviewer step must judge, not rationalize — run it with only the
+  artifact + these `_shared/` rules, ideally as a *separate* sub-agent that never saw the writer's
+  reasoning. A self-review sharing the writer's context misses the defects the author was blind to; a
+  clean same-context review is weak evidence, not proof. See `../sdd-loop/SKILL.md` §Reviewer
+  independence.
 
 ## Non-trio shapes
 

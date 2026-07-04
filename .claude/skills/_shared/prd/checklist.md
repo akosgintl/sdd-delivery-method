@@ -30,6 +30,9 @@ own `spec.md` — the seam between the PRD and the per-feature bundles.
 - **Restating the constitution** — project-wide rules live there, not in every PRD. `[MINOR]`
 - **Banned vague words** in a goal/metric ("make the cart more reliable"). `[MAJOR]`
 - **A solution presented as the problem** in §1. `[MAJOR]`
+- **Hidden cross-feature cycles / no build order** — if feature rows depend on each other circularly
+  (feature A needs B and B needs A), name the seam (events/contracts) and a build order, or the
+  integration risk stays implicit. `[MINOR]`
 
 ## Checklist
 
@@ -39,5 +42,7 @@ own `spec.md` — the seam between the PRD and the per-feature bundles.
 - [ ] Scope states both in-scope capabilities **and** non-goals.
 - [ ] The feature-breakdown table maps each feature to a `spec.md` path.
 - [ ] Constraints, assumptions, and initiative-level risks are recorded.
+- [ ] Cross-feature dependencies (and any circular/build-order risk between feature rows) are noted
+      where features are not independent.
 - [ ] No behavioral / requirement-level detail has leaked in from the specs.
 - [ ] Front-matter (`type: prd, title, status, owner, updated`) complete; `status` legal.
