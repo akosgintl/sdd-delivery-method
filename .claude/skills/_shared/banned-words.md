@@ -4,6 +4,11 @@ In any **normative** statement (a requirement, NFR, acceptance criterion, or con
 principle), the following words are banned. Each must be either replaced by a **measurable
 statement** or given a **precise definition in the glossary**. Self-contained reference.
 
+> **Output language.** This list is English. If the artifact is authored in another natural language,
+> also read `../_shared/languages/<lang>.md` and apply its banned-word list **in addition to** this
+> one. If no pack exists for that language, flag it as a `[MAJOR]` process risk rather than silently
+> passing non-English normative text (a vague word you cannot see is a vague word you cannot catch).
+
 ## The list
 
 > fast, slow, easy, intuitive, robust, secure, scalable, flexible, support, handle, manage,

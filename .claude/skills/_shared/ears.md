@@ -7,6 +7,12 @@ requirement to name its trigger and its observable response. Every EARS requirem
 > The brutal test of a requirement: **can you write a pass/fail check for it?** If not, it's a wish.
 > EARS exists to make the answer "yes."
 
+> **Output language.** The keywords below (`shall`, `When/While/Where/If/Then`, `should/may/could`)
+> are English. If the artifact is authored in another natural language, also read
+> `../_shared/languages/<lang>.md` and apply its keyword mapping **in addition to** this file. If no
+> pack exists for that language, flag it as a `[MAJOR]` process risk rather than silently passing a
+> mis-patterned or non-obligatory requirement.
+
 ## The five patterns
 
 | # | Pattern | Keyword | Use when the behavior is… | Shape |

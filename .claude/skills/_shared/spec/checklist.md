@@ -30,6 +30,8 @@ testable description of intended behavior — the contract. It describes **what*
 - **No non-goals.** Unbounded scope. `[MAJOR]`
 - **Only the happy path.** §7 empty or thin; no boundary or error behavior. `[MAJOR]`
 - **Acceptance criteria that don't map to IDs**, or a requirement with no verifying criterion. `[MAJOR]`
+  This applies to **NFRs identically to FRs** — an NFR with no pass/fail acceptance criterion is
+  untestable, so it is always `[MAJOR]`, never MINOR. (Do not downgrade a missing NFR criterion.)
 - **Anything in §10 Open questions** while `status` is `ready`/`done`. `[BLOCKER]`
 - **A latent open question *outside* §10** — a hedge (`(design; flagged)`, `TBD`, an unresolved
   "A **or** B" choice) in §4/§7/§8/§11 while §10 says none and `status` is `ready`/`done`. It's an

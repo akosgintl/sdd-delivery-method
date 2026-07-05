@@ -55,6 +55,10 @@ knew). To get real judgment:
   green verdicts with suspicion (a clean self-review is weak evidence, not proof).
 - If the reviewer keeps approving on round 1 with only MINORs, that is a smell the review lacked
   independence — re-review from a cold start.
+- **If a constraint forces a self-review** (e.g. a session limit ends the run before an independent
+  sub-agent can be spawned), treat that artifact's independent review as an **OPEN item**, not a
+  pass. Report it as outstanding in the output contract; do not advance status or clear a gate on a
+  self-review verdict.
 
 ## Output contract
 - Report the outcome: `approved` (with round count) or `capped`/`escalated` (with the open review

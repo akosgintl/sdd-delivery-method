@@ -46,9 +46,14 @@ they cross-reference each other heavily:
   gates-writer+gate-runner; and an `sdd-loop` driver). Skills are **self-contained** — they never
   reference `docs/`/`templates/`/`how-to/`/`examples/`; all bundled knowledge lives in
   `.claude/skills/_shared/` (`review-format.md`, `workflow.md`, `conventions.md`, `ears.md`,
-  `banned-words.md`, `gherkin.md`, and a `<artifact>/{template,checklist,example}.md` set), reached
-  with `../_shared/…`. Reviewers emit sequence-numbered `<artifact>.review-NN.md` findings; rewriters
-  apply and check them off. `_shared/` **deliberately duplicates** rules that also live in the study
+  `banned-words.md`, `gherkin.md`, a `<artifact>/{template,checklist,example}.md` set, and
+  `languages/` — per-language packs), reached with `../_shared/…`. Reviewers emit sequence-numbered
+  `<artifact>.review-NN.md` findings; rewriters apply and check them off. Artifacts may be authored in
+  **any natural language**: the normative rules are English by default, and a `_shared/languages/<lang>.md`
+  pack supplies the localized EARS keywords + banned-word list (loaded via the "Output language" block
+  in `ears.md`/`banned-words.md`/`gherkin.md`) so reviewers keep full validation depth — but the
+  **machine vocabulary stays English in every language** (front-matter keys, status values, `FR-/NFR-/T-/ADR-`
+  IDs, `__FR<n>` test-naming). `_shared/` **deliberately duplicates** rules that also live in the study
   (the one place this repo breaks "cross-links over duplication", for portability) — **sync
   obligation:** when a rule changes in `docs/` (e.g. the banned-word list, EARS patterns, a status
   vocabulary), update its `_shared/` copy too. `.claude/skills/README.md` is the runbook + index.

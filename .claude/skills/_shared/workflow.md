@@ -45,6 +45,10 @@ repeat:
   reasoning. A self-review sharing the writer's context misses the defects the author was blind to; a
   clean same-context review is weak evidence, not proof. See `../sdd-loop/SKILL.md` §Reviewer
   independence.
+- **A same-context self-review is an OPEN item, not a pass.** If constraints (e.g. a session limit)
+  force a self-review instead of a fresh sub-agent, record the artifact's independent review as
+  *outstanding* and do not let its verdict clear the gate. Surface it as an open item so the
+  degradation is visible rather than silently accepted as approval.
 
 ## Non-trio shapes
 

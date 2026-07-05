@@ -12,7 +12,7 @@ the ambiguous synonyms you must *not* use, so the glossary actively prevents dri
 
 | Goes in | Stays out |
 |---------|-----------|
-| Domain terms with contested meaning ("cart", "expired", "active user") | general English; shared jargon |
+| Domain terms with contested meaning ("cart", "expired", "active user") | everyday words of the artifact's base language (e.g. general English/Hungarian); shared jargon |
 | Words a spec uses normatively | words that appear once and never recur |
 | Terms whose synonyms cause confusion ("basket" vs "cart") | terms already precise from context |
 | Status/state vocabulary the system acts on | implementation detail (→ design/code) |

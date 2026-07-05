@@ -4,6 +4,10 @@ Where EARS states a *rule*, Gherkin states an *example* of that rule in action â
 directly executable as a test. The two compose: EARS for the normative requirement, Gherkin
 scenarios (or a checklist) as its acceptance criteria. Self-contained reference for the spec skills.
 
+> **Output language.** The `Given/When/Then` keywords are English. If the artifact is authored in
+> another natural language, also read `../_shared/languages/<lang>.md` and apply its Gherkin mapping
+> **in addition to** this file. The `# verifies FR-<n>` requirement-ID annotation always stays English.
+
 ## Form
 
 ```gherkin

@@ -19,6 +19,7 @@ whenever you touch a rule in `_shared/` **or** in `docs/`.
 | `adr/{template,checklist}.md` | `03-artifacts.md` | one decision/file; append-only immutability |
 | `glossary/{template,checklist}.md` | `04-from-needs-to-spec.md` §3.3, `03-artifacts.md` | one meaning per contested term; banned synonyms |
 | `workflow.md` | `02-lifecycle.md`, `08-roles-and-workflow.md` | the P0→P5 pipeline; the write→review→rewrite loop |
+| `languages/*.md` | *(no twin yet)* | localized EARS keywords + banned-word lists per output language; the "Output language" blocks in `ears.md`/`banned-words.md`/`gherkin.md` point to them |
 
 ## How to use it
 
@@ -28,4 +29,5 @@ whenever you touch a rule in `_shared/` **or** in `docs/`.
   study and the skills drift. *(This has bitten us: a traceability-skill fix required patching
   `docs/09`/`docs/07` in the same session.)*
 - **No twin listed?** Then it's skills-only orchestration (`review-format.md` sequencing, the
-  `sdd-loop` control flow) with no study counterpart to sync.
+  `sdd-loop` control flow, the `languages/` packs) with no study counterpart to sync. If a language
+  mechanism is later documented in `docs/`, add its row here and keep the two in sync.

@@ -11,7 +11,10 @@ folder with a `SKILL.md` (name = folder, keyword-rich description). They are **s
 all the knowledge they need (EARS rules, banned words, checklists, template skeletons, gold
 examples, the review-file format) is bundled under [`_shared/`](_shared/) and referenced with
 `../_shared/…`, so this tree does not depend on the study's `docs/`/`templates/`/`how-to/`/`examples/`
-folders.
+folders. Artifacts may be authored in any natural language: the normative rules are English by default,
+and a [`_shared/languages/`](_shared/languages/) pack supplies the localized EARS keywords + banned-word
+list so reviewers keep full validation depth (the machine vocabulary — IDs, status values, front-matter
+keys — always stays English).
 
 ## The 26 skills
 
@@ -65,8 +68,10 @@ re-review.
 
 `review-format.md` (findings schema + severities + `review-NN` sequencing), `workflow.md`,
 `conventions.md` (IDs, status vocab, test-naming), `ears.md`, `banned-words.md`, `gherkin.md`,
-`SYNC.md` (the `_shared` ↔ study sync map — which rule mirrors which `docs/` section), and a
-`<artifact>/{template,checklist,example}.md` set per artifact (plus `gates/`).
+`SYNC.md` (the `_shared` ↔ study sync map — which rule mirrors which `docs/` section), a
+`<artifact>/{template,checklist,example}.md` set per artifact (plus `gates/`), and `languages/`
+(per-language packs that localize the EARS keywords + banned-word list so reviewers keep full depth on
+non-English artifacts — `ears.md`/`banned-words.md`/`gherkin.md` each point to them).
 
 > **Sync obligation.** `_shared/` deliberately *duplicates* rules that also live in the study's
 > `docs/`/`templates/`/`how-to/`/`examples/`, in exchange for portability. When a rule changes in the
